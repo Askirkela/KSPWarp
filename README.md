@@ -2,6 +2,7 @@
 Travel all the way across the universe in no time!
 
 A Kerbal Space Program mod in developement.
+
 Please feel free to help me with it. Post mod-related issues if you have some, give me feedback. I'd appreciate it.
 
 ### How?
@@ -11,11 +12,15 @@ Just add the KSPWarp.dll in your GameData folder and enjoy :)
 ### What?
 This is the project of a KSP mod which messes with the in-game time warps.
 It basically replaces the time warp rates on-demand with the following rates :
+
 Basic (stock) : {x1, x5,  x10,  x50,   x100,    x1000,    x10 000,    x100 000}
+
 Super :         {x1, x10, x50,  x100,  x1 000,  x10 000,  x100 000,   x1 000 000}
+
 Ultra :         {x1, x50, x100, 1 000, x10 000, x100 000, x1 000 000, x10 000 000}
 
 To avoid vessel explosion and/or collision with planets, I disable the collisions check while on very high speed (x1 000 000 and x 10 000 000).
+
 It's the same as pressing ALT+F12 and checking the "No crash damage" checkbox.
 
 ### Why?
