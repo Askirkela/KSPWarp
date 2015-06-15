@@ -1,13 +1,13 @@
-﻿<Properties StartupItem="KSPWarp\KSPWarp.csproj">
+﻿<Properties StartupItem="KSPWarp\KSPWarp.csproj" GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="KSPWarp\KSPWarpClass.cs">
     <Files>
-      <File FileName="KSPWarp\KSPWarpClass.cs" Line="19" Column="2" />
+      <File FileName="KSPWarp\KSPWarpClass.cs" Line="153" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <AuthorInfo Name="Askirkela" Email="" Copyright="Askirkela" Company="" Trademark="" />
+  <AuthorInfo Name="Askirkela" Email="ldebene@gmail.com" Copyright="Askirkela" Company="" Trademark="" />
 </Properties>
