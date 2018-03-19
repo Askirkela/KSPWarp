@@ -1,0 +1,13 @@
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\KSPWarp.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\Assembly-CSharp.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\UnityEngine.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\UnityEngine.UI.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\Assembly-CSharp-firstpass.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\KSPTrackIR.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\KSPAssets.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\Mono.Cecil.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\Ionic.Zip.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\TDx.TDxInput.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\bin\Release\RedShellSDK.dll
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\obj\Release\KSPWarp.csprojResolveAssemblyReference.cache
+C:\Users\luc\Documents\Projects\KSPWarp\KSPWarp\obj\Release\KSPWarp.dll
