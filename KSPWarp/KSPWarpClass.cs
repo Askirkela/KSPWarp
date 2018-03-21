@@ -130,10 +130,13 @@ namespace KSPWarp
 		private Rect windowPos = new Rect (300, 0, 150, 60);
 		private int toolbarInt = 0;
 		private String[] toolbarStrings = { "Basic", "Super", "Ultra" };
+		private bool dontHide = true;
 
 		private void OnGUI ()
 		{
-			if (HighLogic.LoadedScene.Equals (GameScenes.SPACECENTER) || HighLogic.LoadedScene.Equals (GameScenes.TRACKSTATION) || HighLogic.LoadedSceneIsFlight)
+			if (Event.current.Equals (Event.KeyboardEvent (KeyCode.F2.ToString ())))
+				dontHide = !dontHide;
+			if (dontHide && (HighLogic.LoadedScene.Equals (GameScenes.SPACECENTER) || HighLogic.LoadedScene.Equals (GameScenes.TRACKSTATION) || HighLogic.LoadedSceneIsFlight))
 				DrawGUI ();
 		}
 

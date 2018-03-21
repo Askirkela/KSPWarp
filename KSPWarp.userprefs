@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="KSPWarp\KSPWarp.csproj" GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="KSPWarp\KSPWarpClass.cs">
     <Files>
-      <File FileName="KSPWarp\KSPWarpClass.cs" Line="11" Column="10" />
+      <File FileName="KSPWarp\KSPWarpClass.cs" Line="128" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
