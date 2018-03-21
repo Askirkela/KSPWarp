@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace KSPWarp
 {
-	[KSPAddon (KSPAddon.Startup.FlightAndKSC, false)]
+	[KSPAddon (KSPAddon.Startup.AllGameScenes, false)]
 	public class KSPWarpClass : MonoBehaviour
 	{
-		private static String warpDebug = "[KSPWarp] : ";
+		private const String warpDebug = "[KSPWarp] : ";
 		private static float[] baseRates = new float[] {
 			1.0f,
 			5.0f,
@@ -21,16 +21,6 @@ namespace KSPWarp
 		},
 			superRates = new float[] {
 			1.0f,
-			10.0f,
-			50.0f,
-			100.0f,
-			1000.0f,
-			10000.0f,
-			100000.0f,
-			200000.0f
-		},
-			ultraRates = new float[] {
-			1.0f,
 			50.0f,
 			100.0f,
 			1000.0f,
@@ -38,6 +28,16 @@ namespace KSPWarp
 			100000.0f,
 			200000.0f,
 			500000.0f
+		},
+			ultraRates = new float[] {
+			1.0f,
+			1000.0f,
+			10000.0f,
+			100000.0f,
+			200000.0f,
+			500000.0f,
+			750000.0f,
+			1000000.0f
 		};
 		private static float[] baseAltitude = new float[] {
 			0.0f,
@@ -79,35 +79,40 @@ namespace KSPWarp
 		void Start ()
 		{
 			print (warpDebug + "Launching KSPWarp");
-
 		}
 
 		int previousRate = 0;
 
 		void FixedUpdate ()
 		{
-			if (toolbarInt != previousRate) {
-				SetRates (toolbarInt);
-				previousRate = toolbarInt;
-			}
+			if (HighLogic.LoadedScene.Equals (GameScenes.SPACECENTER) || HighLogic.LoadedScene.Equals (GameScenes.TRACKSTATION) || HighLogic.LoadedSceneIsFlight) {
+				if (toolbarInt != previousRate) {
+					SetRates (toolbarInt);
+					previousRate = toolbarInt;
+				}
 
-			//				/** anti Kaboom thingy from Planet Factory **/
-			bool speedMax = (TimeWarp.fetch.warpRates.Equals (superRates) && (TimeWarp.fetch.current_rate_index == 7));
-			bool ultraMax = (TimeWarp.fetch.warpRates.Equals (ultraRates) && (TimeWarp.fetch.current_rate_index >= 6));
-			//
-			if (!speedMax || !ultraMax)
-				ToggleCollisions (true);
-			else
-				ToggleCollisions (false);
+				//				/** anti Kaboom thingy from Planet Factory **/
+				bool speedMax = (TimeWarp.fetch.warpRates.Equals (superRates) && (TimeWarp.fetch.current_rate_index == 7));
+				bool ultraMax = (TimeWarp.fetch.warpRates.Equals (ultraRates) && (TimeWarp.fetch.current_rate_index >= 5));
+				//
+				if (!speedMax || !ultraMax)
+					ToggleCollisions (true);
+				else
+					ToggleCollisions (false);
+			}
 		}
 
 		private void SetRates (int i)
 		{
 			if (i >= 0 || i < rates.Length) { 
-				TimeWarp.fetch.warpRates = rates [i];
-				TimeWarp.fetch.altitudeLimits = altitudes [i];
-				ScreenMessages.PostScreenMessage (warpDebug + "Entering " + toolbarStrings [i] + " rates", 4, ScreenMessageStyle.UPPER_CENTER);
-				print (warpDebug + "Warp rates set to " + i);
+				try {
+					TimeWarp.fetch.warpRates = rates [i];
+					TimeWarp.fetch.altitudeLimits = altitudes [i];
+					ScreenMessages.PostScreenMessage (warpDebug + "Entering " + toolbarStrings [i] + " rates", 4, ScreenMessageStyle.UPPER_CENTER);
+					print (warpDebug + "Warp rates set to " + i);
+				} catch (Exception e) {
+					print (warpDebug + e.Message);
+				}
 			} else {
 				SetRates (0);
 				print (warpDebug + "Warp rates set to default");
@@ -124,17 +129,12 @@ namespace KSPWarp
         	* ******************************************/
 		private Rect windowPos = new Rect (300, 0, 150, 60);
 		private int toolbarInt = 0;
-		private String[] toolbarStrings = { ">", ">>", ">>>" };
+		private String[] toolbarStrings = { "Basic", "Super", "Ultra" };
 
 		private void OnGUI ()
 		{
-			DrawGUI ();
-//			EventVoid.OnEvent hide = new EventVoid.OnEvent (HideWindow);
-//			EventVoid.OnEvent show = new EventVoid.OnEvent (DrawGUI);
-//			GameEvents.onGUIMissionControlSpawn.Add (hide);
-//			GameEvents.onGUIRnDComplexSpawn.Add (hide);
-//			GameEvents.onGUIMissionControlDespawn.Add (show);
-//			GameEvents.onGUIRnDComplexDespawn.Add (show);
+			if (HighLogic.LoadedScene.Equals (GameScenes.SPACECENTER) || HighLogic.LoadedScene.Equals (GameScenes.TRACKSTATION) || HighLogic.LoadedSceneIsFlight)
+				DrawGUI ();
 		}
 
 		private void WindowGUI (int windowID)
@@ -145,7 +145,7 @@ namespace KSPWarp
 			style.active.textColor = Color.red;
 
 			/** Gui window definition **/
-			toolbarInt = GUI.Toolbar (new Rect (0, 30, 150, 30), toolbarInt, toolbarStrings, style);
+			toolbarInt = GUI.Toolbar (new Rect (0, 30, 150, 30), toolbarInt, toolbarStrings/*, style*/);
 
 			GUI.DragWindow ();
 
@@ -155,11 +155,6 @@ namespace KSPWarp
 		{
 			GUI.skin = HighLogic.Skin;
 			windowPos = GUI.Window (1, windowPos, WindowGUI, "Time warp rates");
-		}
-
-		private void HideWindow ()
-		{
-			windowPos = new Rect (-100, -100, 150, 30);
 		}
 
 		/*******************************************
