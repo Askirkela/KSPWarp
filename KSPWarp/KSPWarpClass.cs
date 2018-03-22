@@ -127,7 +127,7 @@ namespace KSPWarp
 		/*******************************************
         	*			GUI
         	* ******************************************/
-		private Rect windowPos = new Rect (300, 0, 150, 60);
+		private Rect windowPos = new Rect (300, 30, 150, 60);
 		private int toolbarInt = 0;
 		private String[] toolbarStrings = { "Basic", "Super", "Ultra" };
 		private bool dontHide = true;
