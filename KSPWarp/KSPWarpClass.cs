@@ -108,7 +108,6 @@ namespace KSPWarp
 				try {
 					TimeWarp.fetch.warpRates = rates [i];
 					TimeWarp.fetch.altitudeLimits = altitudes [i];
-					ScreenMessages.PostScreenMessage (warpDebug + "Entering " + toolbarStrings [i] + " rates", 4, ScreenMessageStyle.UPPER_CENTER);
 					print (warpDebug + "Warp rates set to " + i);
 				} catch (Exception e) {
 					print (warpDebug + e.Message);
@@ -148,7 +147,7 @@ namespace KSPWarp
 			style.active.textColor = Color.red;
 
 			/** Gui window definition **/
-			toolbarInt = GUI.Toolbar (new Rect (0, 30, 150, 30), toolbarInt, toolbarStrings/*, style*/);
+			toolbarInt = GUI.Toolbar (new Rect (0, 30, 150, 30), toolbarInt, toolbarStrings);
 
 			GUI.DragWindow ();
 
@@ -175,7 +174,6 @@ namespace KSPWarp
 				Collider[] p;
 				for (int i = 0; i < vessels.Count; i++) {
 					print (warpDebug + "Collisions on " + vessels [i].GetName () + " are now " + enabled + "**");
-					ScreenMessages.PostScreenMessage (warpDebug + "Collisions on " + vessels [i].GetName () + " are now " + enabled + "**", 1, ScreenMessageStyle.UPPER_CENTER);
 					p = vessels [i].GetComponentsInChildren<Collider> ();
 					for (int j = 0; j < p.Length; j++)
 						p [j].enabled = enabled;
@@ -185,7 +183,6 @@ namespace KSPWarp
 				List<CelestialBody> bodies = FlightGlobals.Bodies;
 				for (int i = 0; i < bodies.Count; i++) {
 					print (warpDebug + "Collisions on " + bodies [i].GetName () + " are now " + enabled + "**");
-					ScreenMessages.PostScreenMessage (warpDebug + "Collisions on " + bodies [i].GetName () + " are now " + enabled + "**", 1, ScreenMessageStyle.UPPER_CENTER);
 					bodies [i].GetComponentInChildren<Collider> ().enabled = enabled;
 				}
 			}
