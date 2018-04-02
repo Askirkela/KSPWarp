@@ -6,6 +6,7 @@ A Kerbal Space Program mod in developement.
 Please feel free to help me with it. Post mod-related issues if you have some, give me feedback. I'd appreciate it.
 
 ## How?
+(Works for the 64 bits version of the game. Not tested on the 32 bits version)
 Copy the content of the `GameData` folder in your game's `GameData` folder and enjoy :)
 
 ## What and Why?
